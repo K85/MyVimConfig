@@ -1,0 +1,183 @@
+#=============================================================================
+# basic.toml --- basic configuration example for SpaceVim
+# Copyright (c) 2016-2021 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    colorscheme = "one"
+    colorscheme_bg = "light"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_iseparator = "bar"
+    buffer_index_type = 4
+    windows_index_type = 3
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = true
+    statusline_unicode = false
+    # Enable vim compatible mode, avoid changing origin vim key bindings
+    vimcompatible = true
+    # FileManager: defx
+    filemanager = "defx"
+    # CodeComplete: coc.nvim
+    autocomplete_method = "coc"
+    # SpaceVim Bootstrap
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+    # Key 's' in Normal Mode
+    windows_leader = ''
+    # Key ',' for fFtT
+    enable_language_specific_leader = false
+
+# 计算器, 日历, 书签等小工具
+[[layers]]
+  name = 'tools'
+
+# Enable autocomplete layer
+[[layers]]
+name = 'autocomplete'
+auto_completion_return_key_behavior = "complete"
+auto_completion_tab_key_behavior = "cycle"
+
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+
+[[layers]]
+  name = "colorscheme"
+
+# Version Control.
+[[layers]]
+  name = "git"
+  git-plugin = "fugitive"
+
+# Disable Default Checker. (Use coc.nvim)
+[[layers]]
+  name = "checkers"
+  enable = false
+
+# Fuzzy Search.
+[[layers]]
+  name = "fzf"
+
+
+# Language Layers.
+[[layers]]
+  name = "lang#latex"
+
+[[layers]]
+  name = "lang#c"
+  enable_clang_syntax_highlight = true
+  [layer.clang_std]
+    cpp = "c11"
+
+[[layers]]
+  name = "lang#java"
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "java"
+  ]
+  [layers.override_cmd]
+    java = [
+    "java",
+    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+    "-Dosgi.bundles.defaultStartLevel=4",
+    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+    "-Dlog.protocol=true",
+    "-Dlog.level=NONE",
+    "-noverify",
+    "-Xmx1G",
+    "-jar",
+    "C:\\Users\\31729\\.SpaceVim.d\\java_lsp\\plugins\\org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+    "-configuration",
+    "C:\\Users\\31729\\.SpaceVim.d\\java_lsp\\config_win",
+    "-data",
+    "C:\\Users\\Administrator\\.cache\\javalsp"
+    ]
+
+[[layers]]
+  name = "format"
+
+# Custom Plugins
+
+# Coc.nvim
+[[custom_plugins]]
+  name = 'neoclide/coc.nvim'
+  merge = 0
+
+# Fuzzy Search for Coc
+[[custom_plugins]]
+  name = 'antoinemadec/coc-fzf'
+  branch = 'release'
+
+[[custom_plugins]]
+    name = 'junegunn/fzf.vim'
+
+# 更加美观的 tagbar
+[[custom_plugins]]
+    name = 'liuchengxu/vista.vim'
+
+# 更加方便的调节窗口的大小
+[[custom_plugins]]
+    name = 'simeji/winresizer'
+
+# 利用 git blame 显示当前行的 commit message
+[[custom_plugins]]
+    name = 'rhysd/git-messenger.vim'
+    lazy =  1
+    on_cmd = 'GitMessenger'
+
+# Float Terminal
+[[custom_plugins]]
+    name = 'voldikss/vim-floaterm'
+
+# Search Index
+[[custom_plugins]]
+    name = 'google/vim-searchindex.git'
+
+# Code Snippets
+[[custom_plugins]]
+    name = 'honza/vim-snippets'
+
+# 一些 lua 插件，比如 telescope, 的依赖
+[[custom_plugins]]
+    name = 'nvim-lua/plenary.nvim'
+
+# 安装 telescope 来实现搜索
+[[custom_plugins]]
+    name = 'nvim-telescope/telescope.nvim'
+
+# 使用 telescope 来搜索 coc 提供的符号
+[[custom_plugins]]
+    name = 'fannheyward/telescope-coc.nvim'
+
+# 配合 sourcetrail 使用
+[[custom_plugins]]
+  name = 'CoatiSoftware/vim-sourcetrail'
+
+[[custom_plugins]]
+  name = 'nvim-treesitter/nvim-treesitter'
+
+[[custom_plugins]]
+  name = 'nvim-telescope/telescope-fzf-native.nvim'
+
+# Pair Match
+[[custom_plugins]]
+  name = 'jiangmiao/auto-pairs'
+
+# Async Run
+[[custom_plugins]]
+  name = 'skywind3000/asyncrun.vim'

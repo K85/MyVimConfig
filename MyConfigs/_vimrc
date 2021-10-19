@@ -1,0 +1,282 @@
+"Plugins"
+call plug#begin('$Vim/vim82/plugged')
+Plug 'Preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'tpope/vim-surround'
+Plug 'aperezdc/vim-template'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'skywind3000/asyncrun.vim'
+call plug#end()
+
+" Basic Settings
+exec 'cd ' . fnameescape('$Vim\VimWorkspace')
+set lines=60 columns=110
+winpos 9999 9999
+syntax enable
+syntax on
+let mapleader=" "
+set shortmess=atI
+set ambiwidth=double
+set number
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set autoindent
+set smartindent
+set autoread
+set autowrite
+set hidden
+set incsearch
+set hlsearch
+set history=200
+" set guifont=consolas:h11
+set guifont=SauceCodePro\ Nerd\ Font\ Mono:h11
+set backspace=indent,eol,start
+set buftype=
+set vb t_vb=
+set cursorline
+map <leader>t :Template<CR>
+
+" GVIM 
+au GuiEnter * set t_vb=
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
+" WhichKey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=1000
+
+" NerdTree
+map <F2> :NERDTreeToggle<CR>
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+let NERDTreeIgnore=['\.pyc','\~$','\.swp', '\.swo', '\.class', '\.exe']
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let NERDTreeShowBookmarks=1
+
+" Disable Direction Keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Fast Copy
+map <leader>a ggVG"+y
+
+" Vim-Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme="molokai" 
+let g:airline_powerline_fonts = 1
+
+" Airline
+nnoremap ]b :bnext<CR>
+nnoremap ]B :blast<CR>
+nnoremap [b :bprevious<CR>
+nnoremap [B :bfirst<CR>
+
+" Color Highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Fast Expand Pwd
+cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'
+
+" Coc
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" DisplayLine
+set cmdheight=1
+
+" Update Delays
+set updatetime=0
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Code Diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Code Nivagation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" Code Documentation
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Hover Highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol Rename
+nmap <leader>rn <Plug>(coc-rename)
+
+" Fast Close Search Highlight
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" Code Format
+map <leader>f :Format<CR>
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Code Action
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" Code Quick Fix
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Scroll Half Screen
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Code Select
+" Requires 'textDocument/selectionRange' support of language server.
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+nnoremap <silent><nowait> <leader>g  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+
+" F5 Compile
+map <F5> :call RunCompiler()<CR>
+func! RunCompiler()
+    exec "w"
+    if &filetype == 'c'
+        AsyncRun -mode=bang g++ % -o %:t:r
+        AsyncRun -mode=bang %:t:r
+    elseif &filetype == 'cpp'
+        AsyncRun -mode=bang g++ -g -Wall --std=c++11 % -o %:t:r
+        AsyncRun -mode=bang %:t:r
+    elseif &filetype == 'java'
+        AsyncRun -cwd=%:p:h -mode=bang javac *.java
+        AsyncRun -cwd=%:p:h -mode=bang java -cp ../ %:p:h:t.%:t:r
+    elseif &filetype == 'python'
+        AsyncRun -mode=bang python3.5 %
+    elseif &filetype == 'sh'
+        AsyncRun -mode=bang %
+    endif
+endfunc
+
+" F9 Debug
+map <F9> :call RunDebugger()<CR>  
+func! RunDebugger()  
+    exec "w"
+    if &filetype == 'c' || &filetype =='cpp'
+      AsyncRun -mode=bang g++ % -g -o %:t:r
+      AsyncRun -mode=os gdb %:t:r
+    elseif &filetype == 'java'
+      AsyncRun -cwd=%:p:h -mode=bang javac -g *.java
+      AsyncRun -cwd=%:p:h -mode=os java -classpath ../ -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y %:p:h:t.%:t:r
+      AsyncRun -mode=os jdb -connect com.sun.jdi.SocketAttach:port=5005,hostname=localhost
+    endif
+endfunc
+
+" F10 Git
+map <F10> :call RunGit()<CR>
+func! RunGit()
+  AsyncRun -cwd=%:p:h -mode=os bash
+endfunc
