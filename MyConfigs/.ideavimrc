@@ -1,0 +1,106 @@
+" Source from .vimrc
+"source ~/.vimrc
+
+" Plugins
+set surround
+"set commentary
+"set textobj-entire
+"set multiple-cursors
+"set argtextobj
+
+" Vim Settings
+set scrolloff=5
+set history=1000
+set showmode
+set incsearch
+set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smartindent
+set autoindent
+set hlsearch
+set smartcase
+
+" Idea Settings
+set ideajoin
+set ideamarks
+
+let mapleader="\<space>"
+
+" Leader
+nmap <leader>1 <Action>(GoToTab1)
+nmap <leader>2 <Action>(GoToTab2)
+nmap <leader>3 <Action>(GoToTab3)
+nmap <leader>4 <Action>(GoToTab4)
+nmap <leader>5 <Action>(GoToTab5)
+nmap <leader>6 <Action>(GoToTab6)
+nmap <leader>7 <Action>(GoToTab7)
+nmap <leader>8 <Action>(GoToTab8)
+nmap <leader>9 <Action>(GoToTab9)
+map <leader>bp <Action>(ToggleLineBreakpoint)
+nmap <leader>bd <Action>(CloseEditor)
+nmap <leader>ba <Action>(CloseAllEditors)
+nmap <leader>bo <Action>(CloseAllEditorsButActive)
+map <leader>rr <Action>(Run)
+map <leader>rd <Action>(Debug)
+map <leader>rt <Action>(RunTests)
+map <leader>rs <Action>(Stop)
+map <leader>rn <Action>(RenameElement)
+map <leader>rc <Action>(ReformatCode)
+nmap <leader>re <Action>(Refactorings.QuickListPopupAction)
+map <leader>rf <Action>(RecentFiles)
+map <leader>rl <Action>(RecentLocations)
+map <leader>rp <Action>(RecentProjects)
+map <leader>a <Action>(GotoAction)
+nmap <leader>fu <Action>(FindUsages)
+map <leader>uw <Action>(Unwrap)
+map <leader>sw <Action>(SurroundWith)
+map <leader>sp <Action>(FileStructurePopup)
+nmap <leader>sd <Action>(SafeDelete)
+nmap <leader>su <Action>(ShowUsages)
+map <leader>sf <Action>(ShowFilePath)
+map <leader>hl <Action>(HighlightUsagesInFile)
+map <leader>c <Action>(CommentByLineComment)
+map <leader>qf <Action>(ShowIntentionActions)
+map <leader>qp <Action>(QuickPreview)
+map <leader>qt <Action>(QuickTypeDefinition)
+nmap <leader>g <Action>(ShowErrorDescription)
+nmap <leader>jd <Action>(QuickJavaDoc)
+map <leader>w <Action>(HideAllWindows)
+nmap <leader>of <Action>(OpenFile)
+nmap <leader>oi <Action>(OptimizeImports)
+nmap <leader>om <Action>(OverrideMethods)
+map <leader>mj <Action>(MoveTabDown)
+map <leader>mk <Action>(MoveTabUp)
+map <leader>mh <Action>(MoveTabLeft)
+map <leader>ml <Action>(MoveTabRight)
+nmap [g <Action>(GotoPreviousError)
+nmap ]g <Action>(GotoNextError)
+nmap [b <Action>(PreviousTab)
+nmap ]b <Action>(NextTab)
+nmap [u <Action>(GotoPrevElementUnderCaretUsage)
+nmap ]u <Action>(GotoNextElementUnderCaretUsage)
+nmap [o <Action>(PreviousOccurence)
+nmap ]o <Action>(NextOccurence)
+nmap [m <Action>(MethodUp)
+nmap ]m <Action>(MethodDown)
+nmap [c <Action>(JumpToLastChange)
+nmap ]c <Action>(JumpToNextChange)
+
+" Go
+nmap ga <Action>(GotoAction)
+nmap gc <Action>(GotoClass)
+nmap gt <Action>(GotoTest)
+nmap gf <Action>(GotoFile)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gL <Action>(QuickImplementations)
+nmap gs <Action>(GotoSuperMethod)
+
+" Ctrl
+map <C-a> ggVG"+y
+map <C-l> noh<CR>
+nmap <C-n> <Action>(NewFile)
+nmap <C-k> <Action>(NewDir)
