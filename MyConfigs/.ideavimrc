@@ -3,10 +3,13 @@
 
 " Plugins
 set surround
-"set commentary
-"set textobj-entire
 "set multiple-cursors
+"set commentary
 "set argtextobj
+"set easymotion
+"set textobj-entire
+"set ReplaceWithRegister
+"set exchange
 
 " Vim Settings
 set scrolloff=5
