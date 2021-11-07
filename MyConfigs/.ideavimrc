@@ -79,6 +79,8 @@ map <leader>mj <Action>(MoveTabDown)
 map <leader>mk <Action>(MoveTabUp)
 map <leader>mh <Action>(MoveTabLeft)
 map <leader>ml <Action>(MoveTabRight)
+
+" []
 nmap [g <Action>(GotoPreviousError)
 nmap ]g <Action>(GotoNextError)
 nmap [b <Action>(PreviousTab)
