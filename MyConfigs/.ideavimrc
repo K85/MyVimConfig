@@ -100,7 +100,7 @@ nmap gi <Action>(GotoImplementation)
 nmap gL <Action>(QuickImplementations)
 nmap gs <Action>(GotoSuperMethod)
 
-" backslash
+" Backslash
 nmap \\g <Action>(Generate)
 nmap \\f <Action>(ReformatCode)
 
