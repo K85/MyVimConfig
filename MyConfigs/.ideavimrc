@@ -3,11 +3,12 @@
 
 " Plugins
 set surround
+"set highlightedyank
 "set multiple-cursors
 "set commentary
 "set argtextobj
-"set easymotion
-"set textobj-entire
+set easymotion
+set textobj-entire
 "set ReplaceWithRegister
 "set exchange
 
@@ -23,11 +24,14 @@ set expandtab
 set smartindent
 set autoindent
 set hlsearch
+set ignorecase
 set smartcase
 
 " Idea Settings
 set ideajoin
 set ideamarks
+
+map <space> <nop>
 
 let mapleader="\<space>"
 
@@ -96,21 +100,25 @@ nmap ]c <Action>(JumpToNextChange)
 
 " Go
 nmap ga <Action>(GotoAction)
+nmap gb <Action>(GotoSuperMethod)
 nmap gc <Action>(GotoClass)
-nmap gt <Action>(GotoTest)
 nmap gf <Action>(GotoFile)
+nmap gt <Action>(GotoTest)
 nmap gd <Action>(GotoDeclaration)
 nmap gD <Action>(GotoTypeDeclaration)
 nmap gi <Action>(GotoImplementation)
 nmap gL <Action>(QuickImplementations)
-nmap gs <Action>(GotoSuperMethod)
+nmap gs <Action>(GotoSymbol)
 
 " Backslash
 nmap \\g <Action>(Generate)
 nmap \\f <Action>(ReformatCode)
+nmap \\ch <Action>(CallHierarchy)
+nmap \\mh <Action>(MethodHierarchy)
+nmap \\th <Action>(TypeHierarchy)
 
 " Ctrl
 map <C-a> ggVG"+y
-map <C-l> noh<CR>
+map <C-l> :noh<CR>
 nmap <C-n> <Action>(NewFile)
 nmap <C-k> <Action>(NewDir)
