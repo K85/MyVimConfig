@@ -4,13 +4,16 @@
 " Plugins
 set surround
 "set highlightedyank
-"set multiple-cursors
-"set commentary
-"set argtextobj
+set NERDTree
+set multiple-cursors
+set commentary
 set easymotion
+set vim-paragraph-motion
+set textobj-indent
 set textobj-entire
-"set ReplaceWithRegister
-"set exchange
+set argtextobj
+set ReplaceWithRegister
+set exchange
 
 " Vim Settings
 set scrolloff=5
