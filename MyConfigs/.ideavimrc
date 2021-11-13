@@ -16,8 +16,7 @@ set ReplaceWithRegister
 set exchange
 
 " Plugins Settings
-"let g:highlightedyank_highlight_duration = "-1"
-"let g:highlightedyank_highlight_color = "rgba(102, 204, 255, 155)"
+let g:highlightedyank_highlight_duration = "-1"
 let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
 
 " Vim Settings
