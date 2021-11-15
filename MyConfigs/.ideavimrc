@@ -6,7 +6,7 @@ set surround
 set highlightedyank
 set NERDTree
 set multiple-cursors
-set commentary
+" set commentary
 set easymotion
 set vim-paragraph-motion
 set textobj-indent
@@ -111,16 +111,16 @@ nmap [c <Action>(JumpToLastChange)
 nmap ]c <Action>(JumpToNextChange)
 
 " Go
-nmap ga <Action>(GotoAction)
-nmap gb <Action>(GotoSuperMethod)
-nmap gc <Action>(GotoClass)
-nmap gf <Action>(GotoFile)
-nmap gt <Action>(GotoTest)
-nmap gd <Action>(GotoDeclaration)
-nmap gD <Action>(GotoTypeDeclaration)
-nmap gi <Action>(GotoImplementation)
-nmap gL <Action>(QuickImplementations)
-nmap gs <Action>(GotoSymbol)
+map ga <Action>(GotoAction)
+map gb <Action>(GotoSuperMethod)
+map gc <Action>(GotoClass)
+map gf <Action>(GotoFile)
+map gt <Action>(GotoTest)
+map gd <Action>(GotoDeclaration)
+map gD <Action>(GotoTypeDeclaration)
+map gi <Action>(GotoImplementation)
+map gL <Action>(QuickImplementations)
+map gs <Action>(GotoSymbol)
 
 " Backslash
 nmap \\g <Action>(Generate)
