@@ -16,7 +16,7 @@ set ReplaceWithRegister
 set exchange
 
 " Plugins Settings
-let g:highlightedyank_highlight_duration = "-1"
+let g:highlightedyank_highlight_duration = "1000"
 let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
 
 " Vim Settings
@@ -81,6 +81,7 @@ map <leader>sh <Action>(MoveTabLeft)
 map <leader>sj <Action>(MoveTabDown)
 map <leader>sk <Action>(MoveTabUp)
 map <leader>sl <Action>(MoveTabRight)
+map <leader>lc <Action>(leetcode.NavigatorActionsMenu)
 map <leader>hl <Action>(HighlightUsagesInFile)
 map <leader>c <Action>(CommentByLineComment)
 map <leader>qf <Action>(ShowIntentionActions)
