@@ -129,9 +129,13 @@ map gs <Action>(GotoSymbol)
 nmap \\g <Action>(Generate)
 nmap \\f <Action>(ReformatCode)
 nmap \\o <Action>(SelectAllOccurrences)
-nmap \\ch <Action>(CallHierarchy)
-nmap \\mh <Action>(MethodHierarchy)
-nmap \\th <Action>(TypeHierarchy)
+nmap \\hc <Action>(CallHierarchy)
+nmap \\hm <Action>(MethodHierarchy)
+nmap \\ht <Action>(TypeHierarchy)
+nmap \\tt <Action>($ShowTranslationDialogAction)
+nmap \\ts <Action>($TranslateTextComponent)
+nmap \\ti <Action>($InclusiveTranslateAction)
+nmap \\to <Action>($ExclusiveTranslateAction)
 
 " Ctrl
 map <C-a> ggVG"+y
