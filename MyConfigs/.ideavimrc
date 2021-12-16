@@ -135,7 +135,7 @@ nmap \\ht <Action>(TypeHierarchy)
 nmap \\tt <Action>($ShowTranslationDialogAction)
 nmap \\ts <Action>($TranslateTextComponent)
 nmap \\ti <Action>($InclusiveTranslateAction)
-nmap \\to <Action>($ExclusiveTranslateAction)
+nmap \\te <Action>($ExclusiveTranslateAction)
 
 " Ctrl
 map <C-a> ggVG"+y
