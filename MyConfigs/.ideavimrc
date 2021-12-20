@@ -98,6 +98,7 @@ map <leader>om <Action>(OverrideMethods)
 map <leader>im <Action>(ImplementMethods)
 map <leader>mj <Action>(MoveStatementDown)
 map <leader>mk <Action>(MoveStatementUp)
+map <leader>z <Action>(ToggleZenMode)
 
 " []
 nmap [g <Action>(GotoPreviousError)
@@ -115,7 +116,7 @@ nmap ]c <Action>(JumpToNextChange)
 
 " Go
 map ga <Action>(GotoAction)
-map gb <Action>(GotoSuperMethod)
+map gm <Action>(GotoSuperMethod)
 map gc <Action>(GotoClass)
 map gf <Action>(GotoFile)
 map gt <Action>(GotoTest)
